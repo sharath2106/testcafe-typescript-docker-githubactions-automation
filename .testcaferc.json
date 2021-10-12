@@ -1,0 +1,18 @@
+{
+  "skipJsErrors": true,
+  "screenshots": {
+    "path": "reports/screenshots/",
+    "takeOnFails": true,
+    "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png"
+  },
+  "selectorTimeout": 30000,
+  "assertionTimeout": 30000,
+  "pageLoadTimeout": 30000,
+  "speed": 1,
+  "reporter": [
+    {
+      "name": "html",
+      "output": "reports/report.html"
+    }
+  ]
+}
