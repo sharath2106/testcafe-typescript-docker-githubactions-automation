@@ -9,6 +9,7 @@ gen
 .DS_Store
 .AppleDouble
 .LSOverride
+yarn.lock
 
 node_modules
 reports
