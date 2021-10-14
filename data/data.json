@@ -1,0 +1,26 @@
+[
+  {
+    "email": "someInvalidEmailAddress",
+    "password": "Abcd@1234",
+    "errorMessage": "Invalid email address.",
+    "feature": "Invalid email address"
+  },
+  {
+    "email": "test@abc.com",
+    "password": "Abcd@1234",
+    "errorMessage": "Authentication failed.",
+    "feature": "Unregistered email address"
+  },
+  {
+    "email": "test@lorem.com",
+    "password": " ",
+    "errorMessage": "Password is required.",
+    "feature": "Empty password"
+  },
+  {
+    "email": " ",
+    "password": "Abcd@1234",
+    "errorMessage": "An email address required.",
+    "feature": "Empty email address"
+  }
+]
