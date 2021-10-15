@@ -30,7 +30,7 @@ export class SignupPage extends BasePage{
     private enterMobilePhone = Selector("#phone_mobile");
     private enterAlias = Selector("#alias");
     private registerAccountButton = Selector("#submitAccount");
-    private landingPage = Selector('.addresses-lists');
+    private errorMessage = Selector('.alert-danger p');
 
     async enterEmailAddressToCreateAccount(){
         await this.waitForElement(this.createAccountForm);
@@ -73,7 +73,18 @@ export class SignupPage extends BasePage{
 
     async registerUser(){
         await this.click(this.registerAccountButton);
-        await this.waitForElement(this.landingPage);
-        await t.expect(this.landingPage.visible).ok();
+    }
+
+    async verifyLandingPageAfterSuccessfulSignUp(){
+        await this.waitForElement(new LoginPage().landingPage);
+        await t.expect(new LoginPage().landingPage.visible).ok();
+        await t.expect(await this.getText(new LoginPage().welcomeBanner)).contains(WELCOME_TO_MY_ACCOUNT);
+    }
+
+    async verifyErrorMessagesAfterValidation(numberOfErrors: string){
+        let expectedErrorMessage = `There are ${numberOfErrors} errors`;
+        let actualErrorMessage = await this.getText(this.errorMessage)
+
+        await t.expect(actualErrorMessage).contains(expectedErrorMessage);
     }
 }

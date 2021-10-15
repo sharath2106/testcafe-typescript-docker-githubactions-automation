@@ -9,12 +9,9 @@ export class LoginPage extends BasePage{
   private email = Selector('input#email');
   private password = Selector('input#passwd');
   private loginButton = Selector('button#SubmitLogin');
-  private landingPage = Selector('div#center_column');
   private errorMessage = Selector('div#center_column li');
-
-  constructor() {
-    super();
-  }
+  landingPage = Selector('div#center_column');
+  welcomeBanner = Selector('.info-account');
 
   async clickSignIn(): Promise<void> {
     await this.waitForElement(this.homePage);
@@ -36,6 +33,6 @@ export class LoginPage extends BasePage{
 
   async verifyErrorMessage(message: string) {
     await this.waitForElement(this.errorMessage);
-    await t.expect(this.getText(this.errorMessage)).eql(message);
+    await t.expect(await this.getText(this.errorMessage)).eql(message);
   }
 }

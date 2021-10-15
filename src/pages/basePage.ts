@@ -12,8 +12,8 @@ export class BasePage {
         await t.typeText(element, keys);
     }
 
-    getText(element: Selector) {
-        return element.textContent
+    async getText(element: Selector) {
+        return await element.innerText;
     }
 
     async selectOptionFromDropDown(selectDropDown: Selector, option: Selector, text: string){
