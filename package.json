@@ -5,7 +5,8 @@
     "pretty-code": "npx prettier --write .",
     "eslint": "eslint **/*.ts --ignore-pattern node_modules/ --fix",
     "test-chrome": "testcafe chrome ./src/tests/",
-    "test-firefox": "testcafe firefox ./src/tests/"
+    "test-firefox": "testcafe firefox ./src/tests/",
+    "test": "testcafe ./src/tests/"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.31.1",
