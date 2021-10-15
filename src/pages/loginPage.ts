@@ -1,8 +1,8 @@
 import { Selector, t } from 'testcafe';
-import {BasePage} from "./basePage";
-import {WELCOME_TO_MY_ACCOUNT} from "../../utils/constants";
+import { BasePage } from './basePage';
+import { WELCOME_TO_MY_ACCOUNT } from '../../utils/constants';
 
-export class LoginPage extends BasePage{
+export class LoginPage extends BasePage {
   private homePage = Selector('#block_top_menu');
   private signIn = Selector('a.login');
   private loginForm = Selector('form#login_form');
@@ -25,10 +25,12 @@ export class LoginPage extends BasePage{
     await this.click(this.loginButton);
   }
 
-  async verifyLandingPageAfterLogin(){
+  async verifyLandingPageAfterLogin() {
     await this.waitForElement(this.landingPage);
     await t.expect(this.landingPage.visible).ok();
-    await t.expect(await this.getText(this.welcomeBanner)).contains(WELCOME_TO_MY_ACCOUNT);
+    await t
+      .expect(await this.getText(this.welcomeBanner))
+      .contains(WELCOME_TO_MY_ACCOUNT);
   }
 
   async verifyErrorMessage(message: string) {
