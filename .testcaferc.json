@@ -1,6 +1,5 @@
 {
   "skipJsErrors": true,
-  "browsers": ["chrome", "firefox", "edge"],
   "screenshots": {
     "path": "reports/screenshots/",
     "takeOnFails": true,
@@ -15,5 +14,6 @@
       "name": "html",
       "output": "reports/report.html"
     }
-  ]
+  ],
+  "src": "src/tests/"
 }
