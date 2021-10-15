@@ -1,5 +1,7 @@
 import {Selector, t} from "testcafe"
 import {BasePage} from "./basePage";
+import {LoginPage} from "./loginPage";
+import {WELCOME_TO_MY_ACCOUNT} from "../../utils/constants";
 const faker = require('faker');
 
 export class SignupPage extends BasePage{

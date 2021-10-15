@@ -1,7 +1,6 @@
 import {Selector, t} from "testcafe";
 
 export class BasePage {
-
     async waitForElement(element: Selector){
         await t.expect(element.visible).ok();
     }
