@@ -14,3 +14,5 @@ yarn.lock
 node_modules
 reports
 log
+allure
+allure-report

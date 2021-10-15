@@ -31,7 +31,7 @@ export class LoginPage extends BasePage {
       await this.sendKeys(this.email, email);
       await this.sendKeys(this.password, password);
       await this.click(this.loginButton);
-      logger.info('User logged in with valid credentials');
+      logger.info('User logged in with email id and password');
     } catch (e) {
       logger.error(
         'Error while logging into the application with the credentials',

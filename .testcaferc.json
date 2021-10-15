@@ -9,11 +9,6 @@
   "assertionTimeout": 30000,
   "pageLoadTimeout": 60000,
   "speed": 1,
-  "reporter": [
-    {
-      "name": "html",
-      "output": "reports/report.html"
-    }
-  ],
+  "reporter": "allure",
   "src": "src/tests/"
 }
