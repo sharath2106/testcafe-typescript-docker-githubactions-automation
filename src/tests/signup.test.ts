@@ -5,13 +5,13 @@ import {
   NO_OF_ERRORS_FOR_NOT_FILLING_CREATE_USER_FORM,
   NO_OF_ERRORS_FOR_NOT_FILLING_PERSONAL_INFO
 } from "../../utils/constants";
+import {getBaseUrl} from "../../utils/helpers";
 
-const baseUrl = 'http://www.automationpractice.com'
 let signupPage: SignupPage;
 let loginPage: LoginPage;
 
 fixture `User signup to the application`
-    .page(baseUrl)
+    .page(getBaseUrl(process.env.ENVIRONMENT))
     .beforeEach(async () => {
       signupPage = new SignupPage();
       loginPage = new LoginPage();
