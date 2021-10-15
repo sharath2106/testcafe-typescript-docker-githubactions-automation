@@ -1,11 +1,10 @@
 import { Selector, t } from 'testcafe';
-import { BasePage } from './basePage';
 import { LoginPage } from './loginPage';
 import { WELCOME_TO_MY_ACCOUNT } from '../utils/constants';
 import { logger } from '../utils/logger';
 const faker = require('faker');
 
-export class SignupPage extends BasePage {
+export class SignupPage {
   private newAccountCreationForm = Selector('#account-creation_form');
   private createAccountForm = Selector('form#create-account_form');
   private emailTextBox = Selector('input#email_create');
@@ -35,14 +34,14 @@ export class SignupPage extends BasePage {
 
   async enterEmailAddressToCreateAccount() {
     try {
-      await this.waitForElement(this.createAccountForm);
-      await this.sendKeys(
+      await t.expect(this.createAccountForm.visible).ok();
+      await t.typeText(
         this.emailTextBox,
         faker.internet.email(
           faker.name.firstName() + faker.name.lastName() + faker.lorem.word(5)
         )
       );
-      await this.click(this.submitButton);
+      await t.click(this.submitButton);
       logger.info('Email address entered to create account');
     } catch (e) {
       logger.error(
@@ -55,7 +54,6 @@ export class SignupPage extends BasePage {
 
   async validateCreateAccountPageForNewUser() {
     try {
-      await this.waitForElement(this.newAccountCreationForm);
       await t.expect(this.newAccountCreationForm.visible).ok();
       logger.info('User landed on create account page');
     } catch (e) {
@@ -66,10 +64,10 @@ export class SignupPage extends BasePage {
 
   async enterPersonalInformationOfUser() {
     try {
-      await this.click(this.userTitle);
-      await this.sendKeys(this.customerFirstName, faker.name.firstName());
-      await this.sendKeys(this.customerLastName, faker.name.lastName());
-      await this.sendKeys(
+      await t.click(this.userTitle);
+      await t.typeText(this.customerFirstName, faker.name.firstName());
+      await t.typeText(this.customerLastName, faker.name.lastName());
+      await t.typeText(
         this.enterPasswordForCustomer,
         faker.internet.password(10)
       );
@@ -103,23 +101,23 @@ export class SignupPage extends BasePage {
   async enterUserAddress() {
     try {
       let postCode = (Math.floor(Math.random() * 90000) + 10000).toString();
-      await this.sendKeys(
+      await t.typeText(
         this.enterCompanyNameOfCustomer,
         faker.company.companyName()
       );
-      await this.sendKeys(
+      await t.typeText(
         this.enterAddressLine1,
         faker.address.streetAddress()
       );
-      await this.sendKeys(this.enterCity, faker.address.city());
+      await t.typeText(this.enterCity, faker.address.city());
       await this.selectOptionFromDropDown(
         this.selectState,
         this.stateOption,
         'Alabama'
       );
-      await this.sendKeys(this.enterPostCode, postCode);
-      await this.sendKeys(this.enterOthers, faker.address.country());
-      await this.sendKeys(this.enterAlias, faker.address.city());
+      await t.typeText(this.enterPostCode, postCode);
+      await t.typeText(this.enterOthers, faker.address.country());
+      await t.typeText(this.enterAlias, faker.address.city());
       logger.info('Entered user address in the create account form');
     } catch (e) {
       logger.error(
@@ -133,8 +131,8 @@ export class SignupPage extends BasePage {
   async enterPhoneNumberForUser() {
     try {
       let number = (Math.floor(Math.random() * 9000000000) + 10000).toString();
-      await this.sendKeys(this.enterPhoneNumber, number);
-      await this.sendKeys(this.enterMobilePhone, number);
+      await t.typeText(this.enterPhoneNumber, number);
+      await t.typeText(this.enterMobilePhone, number);
       logger.info('Entered phone number for the user');
     } catch (e) {
       logger.error(
@@ -146,7 +144,7 @@ export class SignupPage extends BasePage {
 
   async registerUser() {
     try {
-      await this.click(this.registerAccountButton);
+      await t.click(this.registerAccountButton);
       logger.info('Clicked on register button');
     } catch (e) {
       logger.error('Error while clicking on register button', e);
@@ -156,10 +154,10 @@ export class SignupPage extends BasePage {
 
   async verifyLandingPageAfterSuccessfulSignUp() {
     try {
-      await this.waitForElement(new LoginPage().landingPage);
+      await t.expect(new LoginPage().landingPage.visible).ok();
       await t.expect(new LoginPage().landingPage.visible).ok();
       await t
-        .expect(await this.getText(new LoginPage().welcomeBanner))
+        .expect(new LoginPage().welcomeBanner.innerText)
         .contains(WELCOME_TO_MY_ACCOUNT);
       logger.info('Verified landing page after successful signup');
     } catch (e) {
@@ -174,12 +172,20 @@ export class SignupPage extends BasePage {
   async verifyErrorMessagesAfterValidation(numberOfErrors: string) {
     try {
       let expectedErrorMessage = `There are ${numberOfErrors} errors`;
-      let actualErrorMessage = await this.getText(this.errorMessage);
+      let actualErrorMessage = this.errorMessage.innerText;
 
       await t.expect(actualErrorMessage).contains(expectedErrorMessage);
     } catch (e) {
       logger.error('Error message not displayed in the panel', e);
       throw e;
     }
+  }
+
+  private async selectOptionFromDropDown(
+      selectDropDown: Selector,
+      option: Selector,
+      text: string
+  ) {
+    await t.click(selectDropDown).click(option.withText(text));
   }
 }

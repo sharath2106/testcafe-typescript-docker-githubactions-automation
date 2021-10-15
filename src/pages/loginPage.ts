@@ -1,9 +1,8 @@
 import { Selector, t } from 'testcafe';
-import { BasePage } from './basePage';
 import { WELCOME_TO_MY_ACCOUNT } from '../utils/constants';
 import { logger } from '../utils/logger';
 
-export class LoginPage extends BasePage {
+export class LoginPage {
   private homePage = Selector('#block_top_menu');
   private signIn = Selector('a.login');
   private loginForm = Selector('form#login_form');
@@ -16,8 +15,8 @@ export class LoginPage extends BasePage {
 
   async clickSignIn(): Promise<void> {
     try {
-      await this.waitForElement(this.homePage);
-      await this.click(this.signIn);
+      await t.expect(this.homePage.visible).ok();
+      await t.click(this.signIn);
       logger.info('Clicked on Sign in button');
     } catch (e) {
       logger.error('Error while clicking on sign in button', e);
@@ -27,10 +26,10 @@ export class LoginPage extends BasePage {
 
   async login(email, password): Promise<void> {
     try {
-      await this.waitForElement(this.loginForm);
-      await this.sendKeys(this.email, email);
-      await this.sendKeys(this.password, password);
-      await this.click(this.loginButton);
+      await t.expect(this.loginForm.visible).ok();
+      await t.typeText(this.email, email);
+      await t.typeText(this.password, password);
+      await t.click(this.loginButton);
       logger.info('User logged in with email id and password');
     } catch (e) {
       logger.error(
@@ -43,10 +42,10 @@ export class LoginPage extends BasePage {
 
   async verifyLandingPageAfterLogin() {
     try {
-      await this.waitForElement(this.landingPage);
+      await t.expect(this.landingPage.visible).ok();
       await t.expect(this.landingPage.visible).ok();
       await t
-        .expect(await this.getText(this.welcomeBanner))
+        .expect(this.welcomeBanner.innerText)
         .contains(WELCOME_TO_MY_ACCOUNT);
       logger.info('Verified landing page after login');
     } catch (e) {
@@ -57,8 +56,8 @@ export class LoginPage extends BasePage {
 
   async verifyErrorMessage(message: string) {
     try {
-      await this.waitForElement(this.errorMessage);
-      await t.expect(await this.getText(this.errorMessage)).eql(message);
+      await t.expect(this.errorMessage.visible).ok();
+      await t.expect(this.errorMessage.innerText).eql(message);
       logger.info('Verified error message');
     } catch (e) {
       logger.error('Error while verifying the error message', e);
