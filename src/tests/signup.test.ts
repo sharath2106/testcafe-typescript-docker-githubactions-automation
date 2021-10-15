@@ -4,8 +4,8 @@ import {
   NO_OF_ERRORS_FOR_FILLING_ONLY_PERSONAL_INFO,
   NO_OF_ERRORS_FOR_NOT_FILLING_CREATE_USER_FORM,
   NO_OF_ERRORS_FOR_NOT_FILLING_PERSONAL_INFO,
-} from '../../utils/constants';
-import { getBaseUrl } from '../../utils/helpers';
+} from '../utils/constants';
+import { getBaseUrl } from '../utils/helpers';
 
 let signupPage: SignupPage;
 let loginPage: LoginPage;

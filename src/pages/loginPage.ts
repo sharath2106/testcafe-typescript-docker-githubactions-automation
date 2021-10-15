@@ -1,7 +1,7 @@
 import { Selector, t } from 'testcafe';
 import { BasePage } from './basePage';
-import { WELCOME_TO_MY_ACCOUNT } from '../../utils/constants';
-import { logger } from '../../utils/logger';
+import { WELCOME_TO_MY_ACCOUNT } from '../utils/constants';
+import { logger } from '../utils/logger';
 
 export class LoginPage extends BasePage {
   private homePage = Selector('#block_top_menu');
