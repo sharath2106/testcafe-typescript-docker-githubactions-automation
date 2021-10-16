@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - run: npm install
       - uses: DevExpress/testcafe-action@latest
         with:
           args: chrome:headless --test-meta category=sanity
