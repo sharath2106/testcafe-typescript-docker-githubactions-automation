@@ -9,7 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: DevExpress/testcafe-action@latest
-      - name: Build docker container
-        run: docker build . -t e2e:v1
-      - name: Run tests in docker container
-        run: docker run -e BROWSER=chrome -e CATEGORY=sanity e2e:v1
+        with:
+          args: chrome --test-meta category=sanity
