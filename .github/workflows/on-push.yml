@@ -2,11 +2,26 @@ name: Trigger E2E tests on push
 on:
   push:
     branches: [main]
+env:
+  ENVIRONMENT: STAGE
+  EMAIL: test@lorem.com
+  PASSWORD: Abcd@1234
 
 jobs:
   e2e-tests-on-chrome:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: docker build . -t e2e:v1
-      - run: docker run -e BROWSER=chrome -e CATEGORY=sanity e2e:v1
+      - run: npm install
+      - uses: DevExpress/testcafe-action@latest
+        with:
+          args: chrome:headless --test-meta category=sanity
+
+  e2e-tests-on-firefox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm install
+      - uses: DevExpress/testcafe-action@latest
+        with:
+          args: firefox:headless --test-meta category=sanity
