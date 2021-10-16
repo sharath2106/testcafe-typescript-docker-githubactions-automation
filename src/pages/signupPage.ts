@@ -32,7 +32,7 @@ export class SignupPage {
   private registerAccountButton = Selector('#submitAccount');
   private errorMessage = Selector('.alert-danger p');
 
-  async enterEmailAddressToCreateAccount() {
+  async enterEmailAddressToCreateAccount(): Promise<void> {
     try {
       await t.expect(this.createAccountForm.visible).ok();
       await t.typeText(
@@ -52,7 +52,7 @@ export class SignupPage {
     }
   }
 
-  async validateCreateAccountPageForNewUser() {
+  async validateCreateAccountPageForNewUser(): Promise<void> {
     try {
       await t.expect(this.newAccountCreationForm.visible).ok();
       logger.info('User landed on create account page');
@@ -62,7 +62,7 @@ export class SignupPage {
     }
   }
 
-  async enterPersonalInformationOfUser() {
+  async enterPersonalInformationOfUser(): Promise<void> {
     try {
       await t.click(this.userTitle);
       await t.typeText(this.customerFirstName, faker.name.firstName());
@@ -98,17 +98,14 @@ export class SignupPage {
     }
   }
 
-  async enterUserAddress() {
+  async enterUserAddress(): Promise<void> {
     try {
-      let postCode = (Math.floor(Math.random() * 90000) + 10000).toString();
+      const postCode = (Math.floor(Math.random() * 90000) + 10000).toString();
       await t.typeText(
         this.enterCompanyNameOfCustomer,
         faker.company.companyName()
       );
-      await t.typeText(
-        this.enterAddressLine1,
-        faker.address.streetAddress()
-      );
+      await t.typeText(this.enterAddressLine1, faker.address.streetAddress());
       await t.typeText(this.enterCity, faker.address.city());
       await this.selectOptionFromDropDown(
         this.selectState,
@@ -128,9 +125,11 @@ export class SignupPage {
     }
   }
 
-  async enterPhoneNumberForUser() {
+  async enterPhoneNumberForUser(): Promise<void> {
     try {
-      let number = (Math.floor(Math.random() * 9000000000) + 10000).toString();
+      const number = (
+        Math.floor(Math.random() * 9000000000) + 10000
+      ).toString();
       await t.typeText(this.enterPhoneNumber, number);
       await t.typeText(this.enterMobilePhone, number);
       logger.info('Entered phone number for the user');
@@ -142,7 +141,7 @@ export class SignupPage {
     }
   }
 
-  async registerUser() {
+  async registerUser(): Promise<void> {
     try {
       await t.click(this.registerAccountButton);
       logger.info('Clicked on register button');
@@ -152,7 +151,7 @@ export class SignupPage {
     }
   }
 
-  async verifyLandingPageAfterSuccessfulSignUp() {
+  async verifyLandingPageAfterSuccessfulSignUp(): Promise<void> {
     try {
       await t.expect(new LoginPage().landingPage.visible).ok();
       await t.expect(new LoginPage().landingPage.visible).ok();
@@ -169,10 +168,12 @@ export class SignupPage {
     }
   }
 
-  async verifyErrorMessagesAfterValidation(numberOfErrors: string) {
+  async verifyErrorMessagesAfterValidation(
+    numberOfErrors: string
+  ): Promise<void> {
     try {
-      let expectedErrorMessage = `There are ${numberOfErrors} errors`;
-      let actualErrorMessage = this.errorMessage.innerText;
+      const expectedErrorMessage = `There are ${numberOfErrors} errors`;
+      const actualErrorMessage = this.errorMessage.innerText;
 
       await t.expect(actualErrorMessage).contains(expectedErrorMessage);
     } catch (e) {
@@ -182,10 +183,10 @@ export class SignupPage {
   }
 
   private async selectOptionFromDropDown(
-      selectDropDown: Selector,
-      option: Selector,
-      text: string
-  ) {
+    selectDropDown: Selector,
+    option: Selector,
+    text: string
+  ): Promise<void> {
     await t.click(selectDropDown).click(option.withText(text));
   }
 }

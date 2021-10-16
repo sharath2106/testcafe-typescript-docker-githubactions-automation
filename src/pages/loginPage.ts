@@ -40,7 +40,7 @@ export class LoginPage {
     }
   }
 
-  async verifyLandingPageAfterLogin() {
+  async verifyLandingPageAfterLogin(): Promise<void> {
     try {
       await t.expect(this.landingPage.visible).ok();
       await t.expect(this.landingPage.visible).ok();
@@ -54,7 +54,7 @@ export class LoginPage {
     }
   }
 
-  async verifyErrorMessage(message: string) {
+  async verifyErrorMessage(message: string): Promise<void> {
     try {
       await t.expect(this.errorMessage.visible).ok();
       await t.expect(this.errorMessage.innerText).eql(message);
