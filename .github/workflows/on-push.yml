@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v1
       - uses: DevExpress/testcafe-action@latest
         with:
-          args: chrome --test-meta category=sanity
+          args: chrome:headless --test-meta category=sanity
