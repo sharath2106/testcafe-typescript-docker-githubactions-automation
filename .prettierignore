@@ -2,3 +2,5 @@
 node_modules
 .idea
 reports
+allure-report
+log
