@@ -62,7 +62,7 @@ export class SignupPage {
     }
   }
 
-  async enterPersonalInformationOfUser(): Promise<void> {
+  async enterPersonalInformation(): Promise<void> {
     try {
       await t.click(this.userTitle);
       await t.typeText(this.customerFirstName, faker.name.firstName());
@@ -98,7 +98,7 @@ export class SignupPage {
     }
   }
 
-  async enterUserAddress(): Promise<void> {
+  async enterAddress(): Promise<void> {
     try {
       const postCode = (Math.floor(Math.random() * 90000) + 10000).toString();
       await t.typeText(
@@ -141,7 +141,7 @@ export class SignupPage {
     }
   }
 
-  async registerUser(): Promise<void> {
+  async register(): Promise<void> {
     try {
       await t.click(this.registerAccountButton);
       logger.info('Clicked on register button');

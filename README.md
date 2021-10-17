@@ -46,7 +46,7 @@ Remember to change the `export` above to `SET` if you're running a Windows machi
 
 ```sh
 # Get into the directory
-$ cd Signavio-Automation
+$ cd Signavio
 ```
 
 Install `YARN` using `npm install --global yarn`.
@@ -105,9 +105,9 @@ Execute the below commands -
 $ docker build . -t e2e
 
 # Run the docker container with the specific browser
-# To execute tests in Chrome browser
-$ docker run -e BROWSER=chrome -e FEATURE=login e2e   [for executing Login feature tests]
-$ docker run -e BROWSER=chrome -e FEATURE=signup e2e   [for executing Signup feature tests]
+# To execute tests in Chromium browser
+$ docker run -e BROWSER=chromium -e FEATURE=login e2e   [for executing Login feature tests]
+$ docker run -e BROWSER=chromium -e FEATURE=signup e2e   [for executing Signup feature tests]
 
 # To execute tests in Firefox browser
 $ docker run -e BROWSER=firefox -e FEATURE=login e2e   [for executing Login feature tests]
