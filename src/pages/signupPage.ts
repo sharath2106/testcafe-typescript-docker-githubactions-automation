@@ -1,6 +1,6 @@
 import { Selector, t } from 'testcafe';
 import { LoginPage } from './loginPage';
-import { WELCOME_TO_MY_ACCOUNT } from '../utils/constants';
+import {DAY, MONTH, WELCOME_TO_MY_ACCOUNT, YEAR} from '../utils/constants';
 import { logger } from '../utils/logger';
 const faker = require('faker');
 
@@ -38,7 +38,7 @@ export class SignupPage {
       await t.typeText(
         this.emailTextBox,
         faker.internet.email(
-          faker.name.firstName() + faker.name.lastName() + faker.lorem.word(5)
+          faker.name.firstName().toLowerCase()  + faker.lorem.word(5)
         )
       );
       await t.click(this.submitButton);
@@ -74,17 +74,17 @@ export class SignupPage {
       await this.selectOptionFromDropDown(
         this.selectDays,
         this.daysOption,
-        '1'
+        DAY
       );
       await this.selectOptionFromDropDown(
         this.selectMonths,
         this.monthsOption,
-        'January'
+        MONTH
       );
       await this.selectOptionFromDropDown(
         this.selectYears,
         this.yearsOption,
-        '2000'
+        YEAR
       );
       logger.info(
         'Entered personal details of the user in create account form'

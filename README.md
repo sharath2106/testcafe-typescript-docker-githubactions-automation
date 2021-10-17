@@ -7,8 +7,8 @@ _The task is to automate the following scenarios_ -
 1. Login journey for valid user credentials
 2. Login journey for invalid/unregistered/empty user credentials
 3. User signup to the application
-   1. User should be able to register to the application successfully 
-   2. User should see the error messages on trying to register without filling the form 
+   1. User should be able to register to the application successfully
+   2. User should see the error messages on trying to register without filling the form
    3. User should see the error messages on trying to register by just filling the personal information
 
 ### Built with
@@ -77,6 +77,7 @@ To run tests in HEADLESS mode, please use -
 $ yarn test-chrome-headless
 # The above command executes - testcafe chrome:headless ./src/tests/
 ```
+
 ```sh
 # Execute tests in FIREFOX headless browser
 $ yarn test-firefox-headless
@@ -136,7 +137,7 @@ The logger type is FileAppender, this covers the entire lifecycle of test execut
 
 ### CI/CD
 
-`GitHub Actions` is the CI/CD tool to execute the tests. The pipeline will be triggered for every push made to the repo and also manually by the user. 
+`GitHub Actions` is the CI/CD tool to execute the tests. The pipeline will be triggered for every push made to the repo and also manually by the user.
 
 <img width="648" alt="Screenshot 2021-10-17 at 5 09 09 PM" src="https://user-images.githubusercontent.com/25933070/137625813-3adfb6ae-1f50-40d8-be92-8a9d4f119a86.png">
 
@@ -148,7 +149,7 @@ The tests can be triggered on demand using `Trigger E2E tests on demand` workflo
 
 ### Screenshots and videos
 
-Screenshots are captured when there is a test failure. 
+Screenshots are captured when there is a test failure.
 
 ### Checklist
 

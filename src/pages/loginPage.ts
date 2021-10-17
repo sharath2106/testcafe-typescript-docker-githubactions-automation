@@ -25,43 +25,25 @@ export class LoginPage {
   }
 
   async login(email, password): Promise<void> {
-    try {
-      await t.expect(this.loginForm.visible).ok();
-      await t.typeText(this.email, email);
-      await t.typeText(this.password, password);
-      await t.click(this.loginButton);
-      logger.info('User logged in with email id and password');
-    } catch (e) {
-      logger.error(
-        'Error while logging into the application with the credentials',
-        e
-      );
-      throw e;
-    }
+    await t.expect(this.loginForm.visible).ok();
+    await t.typeText(this.email, email);
+    await t.typeText(this.password, password);
+    await t.click(this.loginButton);
+    logger.info('User tried to login with email id and password');
   }
 
   async verifyLandingPageAfterLogin(): Promise<void> {
-    try {
-      await t.expect(this.landingPage.visible).ok();
-      await t.expect(this.landingPage.visible).ok();
-      await t
-        .expect(this.welcomeBanner.innerText)
-        .contains(WELCOME_TO_MY_ACCOUNT);
-      logger.info('Verified landing page after login');
-    } catch (e) {
-      logger.error('Error while verifying the user landing page', e);
-      throw e;
-    }
+    await t.expect(this.landingPage.visible).ok();
+    await t.expect(this.landingPage.visible).ok();
+    await t
+      .expect(this.welcomeBanner.innerText)
+      .contains(WELCOME_TO_MY_ACCOUNT);
+    logger.info('User successfully logged in');
   }
 
   async verifyErrorMessage(message: string): Promise<void> {
-    try {
-      await t.expect(this.errorMessage.visible).ok();
-      await t.expect(this.errorMessage.innerText).eql(message);
-      logger.info('Verified error message');
-    } catch (e) {
-      logger.error('Error while verifying the error message', e);
-      throw e;
-    }
+    await t.expect(this.errorMessage.visible).ok();
+    await t.expect(this.errorMessage.innerText).eql(message);
+    logger.info(`User not logged in due - ${message}`);
   }
 }

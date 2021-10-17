@@ -20,7 +20,7 @@ fixture`User signup to the application`
     await signupPage.validateCreateAccountPageForNewUser();
   });
 
-test.meta({'feature': 'signup', 'category':'sanity'})(
+test.meta({ feature: 'signup', category: 'sanity' })(
   'User should be able to register to the application successfully',
   async () => {
     await signupPage.enterPersonalInformationOfUser();
@@ -31,7 +31,7 @@ test.meta({'feature': 'signup', 'category':'sanity'})(
   }
 );
 
-test.meta({'feature': 'signup', 'category':'sanity'})(
+test.meta({ feature: 'signup', category: 'sanity' })(
   'User should see the error messages on trying to register without filling the form',
   async () => {
     await signupPage.registerUser();
@@ -41,7 +41,7 @@ test.meta({'feature': 'signup', 'category':'sanity'})(
   }
 );
 
-test.meta({'feature': 'signup', 'category':'sanity'})(
+test.meta({ feature: 'signup', category: 'sanity' })(
   'User should see the error messages on trying to register by just filling the personal information',
   async () => {
     await signupPage.enterPersonalInformationOfUser();
@@ -52,7 +52,7 @@ test.meta({'feature': 'signup', 'category':'sanity'})(
   }
 );
 
-test.meta({'feature': 'signup', 'category':'sanity'})(
+test.meta({ feature: 'signup', category: 'sanity' })(
   'User should see the error messages on trying to register by filling only the address and phone number details',
   async () => {
     await signupPage.enterUserAddress();
