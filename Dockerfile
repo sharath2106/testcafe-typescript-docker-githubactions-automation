@@ -7,6 +7,6 @@ RUN npm install
 COPY data ./data
 COPY src ./src
 COPY .testcaferc.json .
-COPY run-test.sh ./
+COPY run-tests.sh ./
 
-ENTRYPOINT [ "./run-test.sh" ]
+ENTRYPOINT [ "./run-tests.sh" ]

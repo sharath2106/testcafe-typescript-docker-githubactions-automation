@@ -6,4 +6,4 @@ export PASSWORD="Abcd@1234"
 export ENVIRONMENT="STAGE"
 
 
-/opt/testcafe/docker/testcafe-docker.sh $BROWSER --test-meta category=$CATEGORY
+/opt/testcafe/docker/testcafe-docker.sh $BROWSER --test-meta feature=$FEATURE

@@ -4,27 +4,26 @@
   "scripts": {
     "pretty-code": "npx prettier --write .",
     "eslint": "eslint **/*.ts --ignore-pattern node_modules/ --fix",
-    "test-chrome": "testcafe chrome ./src/tests/",
-    "test-chrome-headless": "testcafe chrome:headless ./src/tests/",
-    "test-firefox": "testcafe firefox ./src/tests/",
-    "test-firefox-headless": "testcafe firefox:headless ./src/tests/",
-    "test-safari": "testcafe safari ./src/tests/",
-    "test-edge": "testcafe edge ./src/tests/",
-    "test": "testcafe all ./src/tests/",
-    "report": "allure generate allure/allure-results --clean && allure open allure-report"
+    "test-chrome": "testcafe chrome ./src/tests/ --reporter html:./reports/report.html",
+    "test-chrome-headless": "testcafe chrome:headless ./src/tests/ --reporter html:./reports/report.html",
+    "test-firefox": "testcafe firefox ./src/tests/ --reporter html:./reports/report.html",
+    "test-firefox-headless": "testcafe firefox:headless ./src/tests/ --reporter html:./reports/report.html",
+    "test-safari": "testcafe safari ./src/tests/ --reporter html:./reports/report.html",
+    "test-edge": "testcafe edge ./src/tests/ --reporter html:./reports/report.html",
+    "test": "testcafe all ./src/tests/ --reporter html:./reports/report.html"
   },
   "devDependencies": {
+    "@types/faker": "^5.5.3",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
-    "@types/faker": "^5.5.3",
-    "faker": "^5.5.3",
     "eslint": "^7.32.0",
+    "faker": "^5.5.3",
     "husky": "^7.0.2",
+    "log4js": "^6.3.0",
     "prettier": "^2.4.1",
     "testcafe": "^1.16.1",
-    "testcafe-reporter-allure": "^1.0.5",
-    "typescript": "^4.4.3",
-    "log4js": "^6.3.0"
+    "testcafe-reporter-html": "^1.4.6",
+    "typescript": "^4.4.3"
   },
   "prettier": {
     "singleQuote": true

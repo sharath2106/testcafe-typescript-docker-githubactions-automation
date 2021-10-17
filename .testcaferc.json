@@ -1,7 +1,7 @@
 {
   "skipJsErrors": true,
   "screenshots": {
-    "path": "reports/screenshots/",
+    "path": "./reports/screenshots/",
     "takeOnFails": true,
     "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png"
   },
@@ -9,6 +9,5 @@
   "assertionTimeout": 30000,
   "pageLoadTimeout": 60000,
   "speed": 1,
-  "reporter": "allure",
   "src": "src/tests/"
 }
