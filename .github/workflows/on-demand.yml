@@ -1,0 +1,22 @@
+name: Trigger E2E tests on demand
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'BROWSER'
+        required: true
+        default: 'chrome'
+env:
+  ENVIRONMENT: STAGE
+  EMAIL: test@lorem.com
+  PASSWORD: Abcd@1234
+
+jobs:
+  e2e-tests-on-chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm install
+      - uses: DevExpress/testcafe-action@latest
+        with:
+          args: ${{ github.event.inputs.browser }} --test-meta category=sanity
