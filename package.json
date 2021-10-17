@@ -10,7 +10,7 @@
     "test-firefox-headless": "testcafe firefox:headless ./src/tests/",
     "test-safari": "testcafe safari ./src/tests/",
     "test-edge": "testcafe edge ./src/tests/",
-    "test": "testcafe ./src/tests/",
+    "test": "testcafe all ./src/tests/",
     "report": "allure generate allure/allure-results --clean && allure open allure-report"
   },
   "devDependencies": {
