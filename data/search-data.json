@@ -1,0 +1,17 @@
+[
+  {
+    "searchText": "Summer",
+    "results": "4",
+    "searchMessage": "4 results have been found."
+  },
+  {
+    "searchText": "Blouse",
+    "results": "1",
+    "searchMessage": "1 result has been found."
+  },
+  {
+    "searchText": "XYZ",
+    "results": "0",
+    "searchMessage": "0 results have been found."
+  }
+]

@@ -24,7 +24,7 @@ export class LoginPage {
     }
   }
 
-  async login(email, password): Promise<void> {
+  async login(email: string, password: string): Promise<void> {
     await t.expect(this.loginForm.visible).ok();
     await t.typeText(this.email, email);
     await t.typeText(this.password, password);

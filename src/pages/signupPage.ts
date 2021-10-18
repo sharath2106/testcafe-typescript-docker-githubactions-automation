@@ -1,6 +1,6 @@
 import { Selector, t } from 'testcafe';
 import { LoginPage } from './loginPage';
-import {DAY, MONTH, WELCOME_TO_MY_ACCOUNT, YEAR} from '../utils/constants';
+import { DAY, MONTH, WELCOME_TO_MY_ACCOUNT, YEAR } from '../utils/constants';
 import { logger } from '../utils/logger';
 const faker = require('faker');
 
@@ -38,7 +38,7 @@ export class SignupPage {
       await t.typeText(
         this.emailTextBox,
         faker.internet.email(
-          faker.name.firstName().toLowerCase()  + faker.lorem.word(5)
+          faker.name.firstName().toLowerCase() + faker.lorem.word(5)
         )
       );
       await t.click(this.submitButton);

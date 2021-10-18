@@ -18,7 +18,6 @@
     "@typescript-eslint/parser": "^4.31.1",
     "eslint": "^7.32.0",
     "faker": "^5.5.3",
-    "husky": "^7.0.2",
     "log4js": "^6.3.0",
     "prettier": "^2.4.1",
     "testcafe": "^1.16.1",
@@ -27,16 +26,5 @@
   },
   "prettier": {
     "singleQuote": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "npx eslint --fix",
-      "git add"
-    ]
   }
 }

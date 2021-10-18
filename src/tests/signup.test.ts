@@ -7,14 +7,12 @@ import {
 } from '../utils/constants';
 import { getBaseUrl } from '../utils/helpers';
 
-let signupPage: SignupPage;
-let loginPage: LoginPage;
+const signupPage = new SignupPage();
+const loginPage = new LoginPage();
 
 fixture`User signup to the application`
   .page(getBaseUrl(process.env.ENVIRONMENT))
   .beforeEach(async () => {
-    signupPage = new SignupPage();
-    loginPage = new LoginPage();
     await loginPage.clickSignIn();
     await signupPage.enterEmailAddressToCreateAccount();
     await signupPage.validateCreateAccountPageForNewUser();

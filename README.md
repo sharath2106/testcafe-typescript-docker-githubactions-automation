@@ -10,6 +10,9 @@ _The task is to automate the following scenarios_ -
    1. User should be able to register to the application successfully
    2. User should see the error messages on trying to register without filling the form
    3. User should see the error messages on trying to register by just filling the personal information
+4. Search for product in the application
+   1. User should be able to search for different products using the search bar
+   2. User should be able to select a product from the search result drop down
 
 ### Built with
 
@@ -25,7 +28,7 @@ _The task is to automate the following scenarios_ -
 
 ### Structure of the framework
 
-<img width="455" alt="Screenshot 2021-10-17 at 4 40 21 PM" src="https://user-images.githubusercontent.com/25933070/137624819-46b37e37-f42e-4087-b59a-fb2cb1c56342.png">
+<img width="451" alt="Screenshot 2021-10-18 at 10 50 27 AM" src="https://user-images.githubusercontent.com/25933070/137673386-59130067-6eaf-4b3b-92eb-7fe3b1f3c563.png">
 
 ### How to run the tests?
 
@@ -46,7 +49,7 @@ Remember to change the `export` above to `SET` if you're running a Windows machi
 
 ```sh
 # Get into the directory
-$ cd Signavio
+$ cd Signavio-Automation
 ```
 
 Install `YARN` using `npm install --global yarn`.
@@ -54,19 +57,19 @@ Install `YARN` using `npm install --global yarn`.
 ```sh
 # Execute tests in CHROME browser
 $ yarn test-chrome
-# The above command executes - testcafe chrome ./src/tests/
+# The above command executes - testcafe chrome ./src/tests/ --reporter html:./reports/report.html
 ```
 
 ```sh
 # Execute tests in FIREFOX browser
 $ yarn test-firefox
-# The above command executes - testcafe firefox ./src/tests/
+# The above command executes - testcafe firefox ./src/tests/ --reporter html:./reports/report.html
 ```
 
 ```sh
 # Execute tests in both `CHROME`, `SAFARI`, `EDGE` and `FIREFOX` browsers in parallel
 $ yarn test
-# The above command executes - testcafe all ./src/tests/
+# The above command executes - testcafe all ./src/tests/ --reporter html:./reports/report.html
 # The tests are executed in parallel across the all the available browsers [chrome, firefox, safari, edge]
 ```
 
@@ -75,13 +78,13 @@ To run tests in HEADLESS mode, please use -
 ```sh
 # Execute tests in CHROME headless browser
 $ yarn test-chrome-headless
-# The above command executes - testcafe chrome:headless ./src/tests/
+# The above command executes - testcafe chrome:headless ./src/tests/ --reporter html:./reports/report.html
 ```
 
 ```sh
 # Execute tests in FIREFOX headless browser
 $ yarn test-firefox-headless
-# The above command executes - testcafe firefox:headless ./src/tests/
+# The above command executes - testcafe firefox:headless ./src/tests/ --reporter html:./reports/report.html
 ```
 
 ###### To execute tests in docker container -
@@ -108,10 +111,12 @@ $ docker build . -t e2e
 # To execute tests in Chromium browser
 $ docker run -e BROWSER=chromium -e FEATURE=login e2e   [for executing Login feature tests]
 $ docker run -e BROWSER=chromium -e FEATURE=signup e2e   [for executing Signup feature tests]
+$ docker run -e BROWSER=chromium -e FEATURE=search e2e   [for executing Search feature tests]
 
 # To execute tests in Firefox browser
 $ docker run -e BROWSER=firefox -e FEATURE=login e2e   [for executing Login feature tests]
 $ docker run -e BROWSER=firefox -e FEATURE=signup e2e   [for executing Signup feature tests]
+$ docker run -e BROWSER=firefox -e FEATURE=search e2e   [for executing Search feature tests]
 ```
 
 #### `Dockerfile` -
@@ -130,7 +135,7 @@ $ docker run -e BROWSER=firefox -e FEATURE=signup e2e   [for executing Signup fe
 
 ### Logging
 
-`log4js` is used as the logging library for the framework. Logs are generated under the `logs` directory of the project named as `debug.log`
+`log4js` is used as the logging library for the framework. Logs are generated under the `log` directory of the project named as `debug.log`
 
 The logger type is FileAppender, this covers the entire lifecycle of test execution and logs the details into the destination file as shown below -
 <img width="1054" alt="Screenshot 2021-10-17 at 4 52 51 PM" src="https://user-images.githubusercontent.com/25933070/137625352-1cd3f962-8f58-41dd-be26-a7b7da74f7d5.png">
@@ -147,9 +152,9 @@ The tests can be triggered on demand using `Trigger E2E tests on demand` workflo
 
 <img width="1243" alt="Screenshot 2021-10-17 at 5 19 57 PM" src="https://user-images.githubusercontent.com/25933070/137626088-2c7a0214-13f0-4a78-9ec3-1092850fb914.png">
 
-### Screenshots and videos
+### Screenshots
 
-Screenshots are captured when there is a test failure.
+Screenshots are captured when there is a test failure. They are available under the reports directory.
 
 ### Checklist
 
@@ -157,10 +162,11 @@ Screenshots are captured when there is a test failure.
 - [x] Screenshots for failed tests
 - [x] Generating human-readable report
 - [x] Generating random values for insignificant data
-- [x] Encapsulation layers like test data, logic and actions on pages
+- [x] Encapsulation layers like test data and logic on pages
 - [x] Ability to run tests in different browsers
-- [x] Ability to run tests in different environments
 - [x] Stability of the tests
+- [x] CI/CD
+- [x] Dockerized execution
 
 ### Nice to have
 
