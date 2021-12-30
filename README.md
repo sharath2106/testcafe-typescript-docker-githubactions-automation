@@ -1,4 +1,4 @@
-# Signavio Test Automation task
+# Test Automation task
 
 In this project, the automation framework is created using Testcafe and Typescript. The tests can be executed locally and also in docker containers.
 
