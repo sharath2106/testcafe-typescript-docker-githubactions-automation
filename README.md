@@ -26,9 +26,9 @@ _The task is to automate the following scenarios_ -
 - [Prettier] - a code formatter to make the code look neat and clean
 - [eslint] - static code analyzer to identify problematic code
 
-### Structure of the framework
+<!-- ### Structure of the framework -->
 
-<img width="451" alt="Screenshot 2021-10-18 at 10 50 27 AM" src="https://user-images.githubusercontent.com/25933070/137673386-59130067-6eaf-4b3b-92eb-7fe3b1f3c563.png">
+<!-- <img width="451" alt="Screenshot 2021-10-18 at 10 50 27 AM" src="https://user-images.githubusercontent.com/25933070/137673386-59130067-6eaf-4b3b-92eb-7fe3b1f3c563.png"> -->
 
 ### How to run the tests?
 
@@ -49,7 +49,7 @@ Remember to change the `export` above to `SET` if you're running a Windows machi
 
 ```sh
 # Get into the directory
-$ cd Signavio-Automation
+$ cd automation
 ```
 
 Install `YARN` using `npm install --global yarn`.
